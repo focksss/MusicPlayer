@@ -95,13 +95,7 @@ statusText := myGui.AddText(
 
 myGui.OnEvent("Close", ExitPlayer)
 
-; --- Fix: reverse the (backwards) default mouse-wheel direction on sliders ---
-; AHK's Slider control has its own built-in WM_MOUSEWHEEL handling for
-; horizontal sliders, and its direction convention feels inverted (scrolling
-; up/forward decreases the value). We intercept the message ourselves,
-; apply the value change in the direction users actually expect, and
-; return a non-empty value so AHK's own (reversed) handling never runs.
-OnMessage(0x020A, OnSliderMouseWheel)  ; WM_MOUSEWHEEL
+OnMessage(0x020A, OnSliderMouseWheel) ; WM_MOUSEWHEEL
 
 OnSliderMouseWheel(wParam, lParam, msg, hwnd) {
     global progressSlider, volumeSlider
@@ -132,8 +126,6 @@ OnSliderMouseWheel(wParam, lParam, msg, hwnd) {
 
     guiCtrl.Value := newVal
 
-    ; Setting .Value programmatically doesn't fire OnEvent("Change"),
-    ; so trigger the corresponding logic ourselves.
     if isProgress
         ProgressChanged()
     else
@@ -550,9 +542,6 @@ ToggleLoop(*) {
         loopBtn.Text := "Loop: OFF"
 }
 
-; --- Fix: actually perform the seek, instead of gating on a flag that
-; was never set to true anywhere in the script (progressDragging was
-; declared and checked, but nothing ever flipped it on). ---
 ProgressChanged(*) {
     global player, progressSlider, restoring
 
@@ -616,8 +605,6 @@ UpdatePlayerStatus() {
             duration := currentMedia.duration
             position := player.controls.currentPosition
 
-            ; Only let the timer overwrite the slider while the user
-            ; isn't actively holding it down mid-drag.
             if (
                 duration > 0
                 && !GetKeyState("LButton", "P")
