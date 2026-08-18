@@ -5,7 +5,6 @@
 ;@Ahk2Exe-ExeName PlaylistPlayer.exe
 
 STATE_FILE := A_ScriptDir "\state.ini"
-DEFAULT_STACHER_PATH := "C:\Users\" A_UserName "\AppData\Local\Stacher7\Stacher7.exe"
 
 player := ComObject("WMPlayer.OCX")
 playlist := player.newPlaylist("AHK_Playlist", "")
@@ -41,10 +40,10 @@ myGui.AddButton("x600 y10 w100 h30", "Choose Folder")
     .OnEvent("Click", ChooseFolder)
 myGui.AddButton("x600 y50 w100 h30", "Open Script Dir")
     .OnEvent("Click", OpenScriptDir)
-myGui.AddButton("x600 y90 w100 h30", "Open Stacher")
-    .OnEvent("Click", OpenStached)
-myGui.AddButton("x600 y130 w100 h30", "Set Stacher Path")
-    .OnEvent("Click", RemapStached)
+myGui.AddButton("x600 y90 w100 h30", "Download Playlist")
+    .OnEvent("Click", DownloadPlaylist)
+myGui.AddButton("x600 y130 w100 h30", "Remap Storage")
+    .OnEvent("Click", SetStorageFolder)
 
 myGui.AddText("xm y55", "Now Playing:")
 titleText := myGui.AddText("x105 y55 w475", "Nothing playing")
@@ -262,6 +261,156 @@ UpdatePlaylistHighlight() {
     }
 }
 
+GetStoragePath() {
+    global STATE_FILE
+
+    return IniRead(STATE_FILE, "Paths", "storage", "")
+}
+
+SetStorageFolder(*) {
+    global STATE_FILE, statusText, myGui
+
+    currentStorage := GetStoragePath()
+
+    selected := FileSelect(
+        "D1",
+        currentStorage,
+        "Select Music Storage Folder"
+    )
+
+    if !selected
+        return
+
+    IniWrite(
+        selected,
+        STATE_FILE,
+        "Paths",
+        "storage"
+    )
+
+    statusText.Text := "Music storage folder set to: " selected
+}
+
+PromptForURL() {
+    global myGui
+
+    result := ""
+    submittedUrl := ""
+
+    dlgGui := Gui(
+        "+Owner" myGui.Hwnd,
+        "Download Playlist"
+    )
+    dlgGui.SetFont("s10", "Segoe UI")
+
+    dlgGui.AddText("xm y10", "Playlist URL:")
+    urlEdit := dlgGui.AddEdit("xm y30 w400 h25")
+
+    okBtn := dlgGui.AddButton(
+        "x235 y65 w80 h30 Default",
+        "OK"
+    )
+    cancelBtn := dlgGui.AddButton(
+        "x325 y65 w80 h30",
+        "Cancel"
+    )
+
+    okBtn.OnEvent("Click", (*) => (
+        submittedUrl := urlEdit.Text,
+        result := "ok",
+        dlgGui.Destroy()
+    ))
+
+    cancelBtn.OnEvent("Click", (*) => (
+        result := "cancel",
+        dlgGui.Destroy()
+    ))
+
+    dlgGui.OnEvent("Close", (*) => (
+        result := "cancel",
+        dlgGui.Destroy()
+    ))
+
+    dlgGui.OnEvent("Escape", (*) => (
+        result := "cancel",
+        dlgGui.Destroy()
+    ))
+
+    dlgGui.Show("w420 h110")
+
+    urlEdit.Focus()
+
+    while (result = "")
+        Sleep(50)
+
+    if (result != "ok")
+        return ""
+
+    return Trim(submittedUrl)
+}
+
+DownloadPlaylist(*) {
+    global statusText
+
+    storage := GetStoragePath()
+
+    if (storage = "" || !DirExist(storage)) {
+        answer := MsgBox(
+            "No music storage folder is set yet. Choose one now?",
+            "Set Storage Folder",
+            "YesNo Icon!"
+        )
+
+        if (answer != "Yes")
+            return
+
+        SetStorageFolder()
+
+        storage := GetStoragePath()
+
+        if (storage = "" || !DirExist(storage)) {
+            statusText.Text := "Download cancelled: no storage folder set."
+            return
+        }
+    }
+
+    url := PromptForURL()
+
+    if (url = "")
+        return
+
+    ytdlpPath := A_ScriptDir "\yt-dlp.exe"
+
+    if !FileExist(ytdlpPath) {
+        MsgBox(
+            "yt-dlp.exe was not found in:`n" A_ScriptDir,
+            "Error",
+            "Icon!"
+        )
+        return
+    }
+
+    outputTemplate := storage
+        . "\%(playlist_title)s\%(artist)s - %(playlist_title)s - %(title)s.%(ext)s"
+
+    cmd := '"' ytdlpPath '"'
+        . ' -x --audio-format mp3'
+        . ' -o "' outputTemplate '"'
+        . ' "' url '"'
+
+    try {
+        Run(cmd, A_ScriptDir, "Min")
+
+        statusText.Text := "Downloading playlist to " storage " ..."
+    } catch as err {
+        MsgBox(
+            "Failed to start yt-dlp: " err.Message,
+            "Error",
+            "Icon!"
+        )
+    }
+}
+
 ChooseFolder(*) {
     global currentFolder
 
@@ -375,32 +524,6 @@ LoadFolder(folder, restoreSaved := false) {
 
 OpenScriptDir(*) {
     Run('explorer.exe "' A_ScriptDir '"')
-}
-
-OpenStached(*) {
-    try {
-        Run(IniRead(
-            STATE_FILE,
-            "Pathing",
-            "Stached",
-            DEFAULT_STACHER_PATH
-        ))
-    } catch Error as e {
-        MsgBox("Failed to open stached`n`n"
-         . "Message: " . e.Message . "`n"
-         . "File: " . e.File . "`n"
-         . "Line: " . e.Line . "`n"
-         . "What: " . e.What
-        )
-    }
-}
-RemapStached(*) {
-    IniWrite(
-        FileSelect(, , "Select Stacher.exe", "Executable (*.exe)"),
-        STATE_FILE,
-        "Pathing",
-        "Stached",
-    )
 }
 
 RestoreSavedSong() {
