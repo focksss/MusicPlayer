@@ -648,6 +648,7 @@ LoadFolder(folder, restoreSaved := false) {
             }
         }
     }
+    playlistView.ModifyCol(1, "Auto")
 
     displayFolder := folder
     if (InStr(displayFolder, A_ScriptDir) = 1) {
@@ -807,7 +808,6 @@ PlayPause(*) {
         playBtn.Text := "Pause"
     }
 }
-
 PreviousSong(*) {
     global player, playlist
 
@@ -816,7 +816,6 @@ PreviousSong(*) {
 
     try player.controls.previous()
 }
-
 NextSong(*) {
     global player, playlist
 
@@ -825,7 +824,6 @@ NextSong(*) {
 
     try player.controls.next()
 }
-
 ToggleLoop(*) {
     global player
     global loopEnabled, loopBtn
@@ -1069,7 +1067,6 @@ SaveState(*) {
         )
     }
 }
-
 LoadSavedState() {
     global STATE_FILE
     global currentFolder
