@@ -5,9 +5,13 @@
 ;@Ahk2Exe-ExeName PlaylistPlayer.exe
 
 STATE_FILE := A_ScriptDir "\state.ini"
+DEFAULT_STACHER_PATH := "C:\Users\" A_UserName "\AppData\Local\Stacher7\Stacher7.exe"
 
 player := ComObject("WMPlayer.OCX")
 playlist := player.newPlaylist("AHK_Playlist", "")
+
+winWidth := 1000
+winHeight := 225
 
 loopEnabled := false
 currentFolder := ""
@@ -19,17 +23,29 @@ restoring := false
 
 volume := 100
 
-progressDragging := false
-
 myGui := Gui("-AlwaysOnTop", "AHK Playlist Player")
 myGui.SetFont("s10", "Segoe UI")
 
+playlistView := myGui.AddListView(
+    "x710 y10 w280 h200 -Hdr -Multi",
+    ["Playlist"]
+)
+playlistView.ModifyCol(1, 260)
+playlistView.OnEvent("ItemSelect", PlaylistSongSelected)
+playlistSyncing := false
+
 myGui.AddText("xm y15", "Folder:")
 folderText := myGui.AddText("x65 y15 w400", "No folder selected")
-myGui.AddButton("x350 y10 w100", "Choose Folder")
+
+myGui.AddButton("x600 y10 w100 h30", "Choose Folder")
     .OnEvent("Click", ChooseFolder)
-myGui.AddButton("x480 y10 w100", "Open Script Dir")
+myGui.AddButton("x600 y50 w100 h30", "Open Script Dir")
     .OnEvent("Click", OpenScriptDir)
+myGui.AddButton("x600 y90 w100 h30", "Open Stacher")
+    .OnEvent("Click", OpenStached)
+myGui.AddButton("x600 y130 w100 h30", "Set Stacher Path")
+    .OnEvent("Click", RemapStached)
+
 myGui.AddText("xm y55", "Now Playing:")
 titleText := myGui.AddText("x105 y55 w475", "Nothing playing")
 
@@ -45,29 +61,19 @@ progressTimeText := myGui.AddText(
     "0:00 / 0:00"
 )
 
-prevBtn := myGui.AddButton(
-    "x75 y120 w105 h35",
-    "Previous"
-)
-
+myGui.AddButton("x75 y120 w105 h35", "Previous")
+    .OnEvent("Click", PreviousSong)
+myGui.AddButton( "x310 y120 w105 h35", "Next")
+    .OnEvent("Click", NextSong)
 playBtn := myGui.AddButton(
     "x190 y120 w110 h35",
     "Play"
 )
-
-nextBtn := myGui.AddButton(
-    "x310 y120 w105 h35",
-    "Next"
-)
-
 loopBtn := myGui.AddButton(
     "x425 y120 w105 h35",
     "Loop: OFF"
 )
-
-prevBtn.OnEvent("Click", PreviousSong)
 playBtn.OnEvent("Click", PlayPause)
-nextBtn.OnEvent("Click", NextSong)
 loopBtn.OnEvent("Click", ToggleLoop)
 
 myGui.AddText("xm y165", "Volume:")
@@ -76,9 +82,7 @@ volumeSlider := myGui.AddSlider(
     "x75 y160 w400 h25 Range0-100 ToolTip",
     volume
 )
-
 volumeSlider.OnEvent("Change", VolumeChanged)
-
 volumeText := myGui.AddText(
     "x485 y165 w60",
     volume "%"
@@ -91,6 +95,53 @@ statusText := myGui.AddText(
 
 myGui.OnEvent("Close", ExitPlayer)
 
+; --- Fix: reverse the (backwards) default mouse-wheel direction on sliders ---
+; AHK's Slider control has its own built-in WM_MOUSEWHEEL handling for
+; horizontal sliders, and its direction convention feels inverted (scrolling
+; up/forward decreases the value). We intercept the message ourselves,
+; apply the value change in the direction users actually expect, and
+; return a non-empty value so AHK's own (reversed) handling never runs.
+OnMessage(0x020A, OnSliderMouseWheel)  ; WM_MOUSEWHEEL
+
+OnSliderMouseWheel(wParam, lParam, msg, hwnd) {
+    global progressSlider, volumeSlider
+
+    guiCtrl := ""
+    try guiCtrl := GuiCtrlFromHwnd(hwnd)
+
+    if !guiCtrl
+        return
+
+    if (guiCtrl != progressSlider && guiCtrl != volumeSlider)
+        return
+
+    delta := (wParam >> 16) & 0xFFFF
+    if (delta > 32767)
+        delta -= 65536
+
+    isProgress := (guiCtrl = progressSlider)
+    step := isProgress ? 20 : 2
+    maxVal := isProgress ? 1000 : 100
+
+    newVal := guiCtrl.Value + (delta > 0 ? step : -step)
+
+    if (newVal < 0)
+        newVal := 0
+    if (newVal > maxVal)
+        newVal := maxVal
+
+    guiCtrl.Value := newVal
+
+    ; Setting .Value programmatically doesn't fire OnEvent("Change"),
+    ; so trigger the corresponding logic ourselves.
+    if isProgress
+        ProgressChanged()
+    else
+        VolumeChanged()
+
+    return 0
+}
+
 windowX := IniRead(STATE_FILE, "Window", "X", "")
 windowY := IniRead(STATE_FILE, "Window", "Y", "")
 
@@ -99,13 +150,14 @@ if (windowX != "" && windowY != "") {
         myGui.Show(
             "x" windowX
             " y" windowY
-            " w600 h225"
+            " w" winWidth
+            " h" winHeight
         )
     } catch {
-        myGui.Show("w600 h225")
+        myGui.Show("w" winWidth " h" winHeight)
     }
 } else {
-    myGui.Show("w600 h225")
+    myGui.Show("w" winWidth " h" winHeight)
 }
 
 savedVolume := IniRead(
@@ -132,26 +184,96 @@ volumeText.Text := volume "%"
 
 try player.settings.volume := volume
 
-; WM_LBUTTONDOWN
-OnMessage(0x0201, MouseLeftDown)
-; WM_LBUTTONUP
-OnMessage(0x0202, MouseLeftUp)
-; WM_MOUSEWHEEL
-OnMessage(0x020A, MouseWheel)
-
 SetTimer(UpdatePlayerStatus, 250)
 SetTimer(SaveState, 2000)
 
 LoadSavedState()
 
+PlaylistSongSelected(guiCtrl, row, selected) {
+    global player, playlist
+    global playlistSyncing
+    global titleText, playBtn, statusText
+
+    if playlistSyncing
+        return
+
+    if !selected
+        return
+
+    if (row <= 0)
+        return
+
+    if (row > playlist.count)
+        return
+
+    try {
+        item := playlist.item(row - 1)
+
+        player.controls.playItem(item)
+
+        title := item.name
+
+        if !title
+            title := guiCtrl.GetText(row, 1)
+
+        titleText.Text := title
+        playBtn.Text := "Pause"
+        statusText.Text := "Playing"
+    }
+}
+UpdatePlaylistHighlight() {
+    global player, playlist
+    global playlistView, playlistSyncing
+
+    if (playlist.count = 0)
+        return
+
+    try {
+        currentMedia := player.currentMedia
+
+        if !currentMedia
+            return
+
+        currentIndex := -1
+
+        Loop playlist.count {
+            index := A_Index - 1
+
+            try {
+                item := playlist.item(index)
+
+                if (item.isIdentical(currentMedia)) {
+                    currentIndex := index
+                    break
+                }
+            }
+        }
+
+        if (currentIndex < 0)
+            return
+
+        row := currentIndex + 1
+
+        playlistSyncing := true
+
+        Loop playlistView.GetCount()
+            playlistView.Modify(A_Index, "-Select")
+
+        playlistView.Modify(
+            row,
+            "Select Focus"
+        )
+
+        playlistSyncing := false
+    } catch {
+        playlistSyncing := false
+    }
+}
+
 ChooseFolder(*) {
     global currentFolder
 
-    selected := DirSelect(
-        ,
-        3,
-        "Select a folder containing music"
-    )
+    selected := FileSelect("D1")
 
     if !selected
         return
@@ -166,6 +288,7 @@ LoadFolder(folder, restoreSaved := false) {
     global restorePosition, restorePaused, restoring
     global loopEnabled, loopBtn
     global progressSlider, progressTimeText
+    global playlistView, playlistSyncing
 
     restoring := restoreSaved
 
@@ -175,6 +298,10 @@ LoadFolder(folder, restoreSaved := false) {
         "AHK_Playlist",
         ""
     )
+
+    playlistSyncing := true
+    playlistView.Delete()
+    playlistSyncing := false
 
     fileCount := 0
 
@@ -192,6 +319,12 @@ LoadFolder(folder, restoreSaved := false) {
                 )
 
                 playlist.appendItem(mediaItem)
+
+                playlistView.Add(
+                    "",
+                    A_LoopFileName
+                )
+
                 fileCount++
             }
         }
@@ -207,6 +340,7 @@ LoadFolder(folder, restoreSaved := false) {
         if (displayFolder = "")
             displayFolder := "\"
     }
+
     folderText.Text := displayFolder
 
     progressSlider.Value := 0
@@ -243,9 +377,38 @@ LoadFolder(folder, restoreSaved := false) {
         loopBtn.Text := "Loop: ON"
     else
         loopBtn.Text := "Loop: OFF"
+
+    UpdatePlaylistHighlight()
 }
+
 OpenScriptDir(*) {
     Run('explorer.exe "' A_ScriptDir '"')
+}
+
+OpenStached(*) {
+    try {
+        Run(IniRead(
+            STATE_FILE,
+            "Pathing",
+            "Stached",
+            DEFAULT_STACHER_PATH
+        ))
+    } catch Error as e {
+        MsgBox("Failed to open stached`n`n"
+         . "Message: " . e.Message . "`n"
+         . "File: " . e.File . "`n"
+         . "Line: " . e.Line . "`n"
+         . "What: " . e.What
+        )
+    }
+}
+RemapStached(*) {
+    IniWrite(
+        FileSelect(, , "Select Stacher.exe", "Executable (*.exe)"),
+        STATE_FILE,
+        "Pathing",
+        "Stached",
+    )
 }
 
 RestoreSavedSong() {
@@ -387,16 +550,13 @@ ToggleLoop(*) {
         loopBtn.Text := "Loop: OFF"
 }
 
+; --- Fix: actually perform the seek, instead of gating on a flag that
+; was never set to true anywhere in the script (progressDragging was
+; declared and checked, but nothing ever flipped it on). ---
 ProgressChanged(*) {
-    global player
-    global progressSlider
-    global progressDragging
-    global restoring
+    global player, progressSlider, restoring
 
     if restoring
-        return
-
-    if !progressDragging
         return
 
     try {
@@ -427,123 +587,10 @@ VolumeChanged(*) {
     try player.settings.volume := volume
 }
 
-MouseLeftDown(wParam, lParam, msg, hwnd) {
-    global progressSlider
-    global progressDragging
-
-    MouseGetPos(
-        ,
-        ,
-        ,
-        &controlHwnd
-    )
-
-    if (controlHwnd = progressSlider.Hwnd) {
-        progressDragging := true
-    }
-}
-MouseLeftUp(wParam, lParam, msg, hwnd) {
-    global progressSlider
-    global progressDragging
-    global player
-
-    if !progressDragging
-        return
-
-    progressDragging := false
-
-    try {
-        if !player.currentMedia
-            return
-
-        duration := player.currentMedia.duration
-
-        if (duration <= 0)
-            return
-
-        newPosition :=
-            (progressSlider.Value / 1000) * duration
-
-        player.controls.currentPosition :=
-            newPosition
-    }
-}
-MouseWheel(wParam, lParam, msg, hwnd) {
-    global progressSlider
-    global volumeSlider
-    global player
-
-    MouseGetPos(,,,&controlHwnd) ; ?
-
-    if (controlHwnd = progressSlider.Hwnd) {
-        try {
-            if !player.currentMedia
-                return
-
-            duration := player.currentMedia.duration
-
-            if (duration <= 0)
-                return
-
-            currentPosition :=
-                player.controls.currentPosition
-
-            wheelDelta := GetWheelDelta(wParam)
-
-            newPosition :=
-                currentPosition + (wheelDelta * 5)
-
-            if (newPosition < 0)
-                newPosition := 0
-
-            if (newPosition > duration)
-                newPosition := duration
-
-            player.controls.currentPosition :=
-                newPosition
-        }
-
-        return
-    }
-
-    if (controlHwnd = volumeSlider.Hwnd) {
-        wheelDelta := GetWheelDelta(wParam)
-
-        newVolume :=
-            volumeSlider.Value + (wheelDelta * 5)
-
-        if (newVolume < 0)
-            newVolume := 0
-
-        if (newVolume > 100)
-            newVolume := 100
-
-        volumeSlider.Value := newVolume
-        VolumeChanged()
-
-        return
-    }
-}
-GetWheelDelta(wParam) {
-    delta := (wParam >> 16) & 0xFFFF
-
-    if (delta >= 0x8000)
-        delta -= 0x10000
-
-    if (delta > 0)
-        return 1
-
-    if (delta < 0)
-        return -1
-
-    return 0
-}
-
 UpdatePlayerStatus() {
     global player, playlist
     global titleText, statusText, playBtn
     global progressSlider, progressTimeText
-    global progressDragging
 
     if (playlist.count = 0)
         return
@@ -564,12 +611,16 @@ UpdatePlayerStatus() {
 
             titleText.Text := title
 
+            UpdatePlaylistHighlight()
+
             duration := currentMedia.duration
             position := player.controls.currentPosition
 
+            ; Only let the timer overwrite the slider while the user
+            ; isn't actively holding it down mid-drag.
             if (
                 duration > 0
-                && !progressDragging
+                && !GetKeyState("LButton", "P")
             ) {
                 sliderValue :=
                     Round((position / duration) * 1000)
