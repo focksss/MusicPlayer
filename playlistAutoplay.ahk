@@ -289,7 +289,7 @@ DenoAvailable() {
 }
 
 FFmpegAvailable() {
-    if (FileExist(A_ScriptDir "\ffmpeg.exe") && FileExist(A_ScriptDir "\ffprobe.exe"))
+    if (FileExist(A_ScriptDir "\ffmpeg\ffmpeg.exe") && FileExist(A_ScriptDir "\ffmpeg\ffprobe.exe"))
         return true
 
     try {
@@ -506,12 +506,10 @@ DownloadPlaylist(*) {
 
     if !DenoAvailable() {
         answer := MsgBox(
-            "yt-dlp needs the Deno JavaScript runtime to download from "
-            . "YouTube reliably. Without it, downloads often fail with "
-            . "HTTP 403 errors.`n`n"
-            . "Download deno.exe from:`n"
-            . "https://github.com/denoland/deno/releases/latest`n"
-            . "and place it in:`n" A_ScriptDir
+            "yt-dlp needs the Deno JavaScript runtime"
+            . "Run:`n`n"
+            . "irm https://deno.land/install.ps1 | iex`n"
+            . "in PowerShell to download`n"
             . "`n`nContinue anyway?",
             "Deno Not Found",
             "YesNo Icon!"
@@ -523,14 +521,7 @@ DownloadPlaylist(*) {
 
     if !FFmpegAvailable() {
         answer := MsgBox(
-            "FFmpeg was not found. yt-dlp needs ffmpeg.exe and ffprobe.exe "
-            . "to extract/convert audio to mp3 — without them, downloads "
-            . "will fail at the conversion step.`n`n"
-            . "Download a Windows build (the 'full' or 'essentials' zip) "
-            . "from:`n"
-            . "https://www.gyan.dev/ffmpeg/builds/`n"
-            . "and place ffmpeg.exe and ffprobe.exe (from its bin folder) "
-            . "in:`n" A_ScriptDir
+            "FFmpeg was not found"
             . "`n`nContinue anyway?",
             "FFmpeg Not Found",
             "YesNo Icon!"
@@ -549,8 +540,8 @@ DownloadPlaylist(*) {
     outputTemplateEscaped := StrReplace(outputTemplate, "%", "%%")
 
     ffmpegLocationArg := ""
-    if FileExist(A_ScriptDir "\ffmpeg.exe")
-        ffmpegLocationArg := ' --ffmpeg-location "' A_ScriptDir '"'
+    if FileExist(A_ScriptDir "\ffmpeg\ffmpeg.exe")
+        ffmpegLocationArg := ' --ffmpeg-location "' A_ScriptDir "\ffmpeg" '"'
 
     batContent := "@echo off`r`n"
         . '"' ytdlpPath '"'
@@ -558,6 +549,7 @@ DownloadPlaylist(*) {
         . ' --no-abort-on-error'
         . ' --ignore-errors'
         . ' --extractor-args "youtube:player_client=visionos"'
+        . ' --replace-in-metadata "playlist_title" "^Album - " ""'
         . ffmpegLocationArg
         . ' -o "' outputTemplateEscaped '"'
         . ' "' url '"'
