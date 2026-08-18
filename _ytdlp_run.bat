@@ -1,0 +1,2 @@
+﻿@echo off
+"C:\Users\focks\OneDrive\Desktop\Music\MusicPlayer\yt-dlp.exe" -x --audio-format mp3 --no-abort-on-error --ignore-errors --extractor-args "youtube:player_client=visionos" -o "C:\Users\focks\OneDrive\Desktop\Music\Playlists\%%(playlist_title)s\%%(artist)s - %%(playlist_title)s - %%(title)s.%%(ext)s" "https://music.youtube.com/playlist?list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8" > "C:\Users\focks\OneDrive\Desktop\Music\MusicPlayer\yt-dlp_log.txt" 2>&1

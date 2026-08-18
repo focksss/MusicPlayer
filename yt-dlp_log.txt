@@ -1,1 +1,241 @@
-The filename, directory name, or volume label syntax is incorrect.
+[youtube:tab] Extracting URL: https://music.youtube.com/playlist?list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8
+WARNING: [youtube:tab] YouTube Music is not directly supported. Redirecting to https://www.youtube.com/playlist?list=OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8
+[youtube:tab] OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8: Downloading webpage
+[youtube:tab] OLAK5uy_n-lE02j8pQkwGhsL5JLAPvbBAoAmxh9n8: Redownloading playlist API JSON with unavailable videos
+[download] Downloading playlist: Album - The Wall
+[youtube:tab] Playlist Album - The Wall: Downloading 26 items of 26
+[download] Downloading item 1 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=uzsEmI61Xas
+[youtube] uzsEmI61Xas: Downloading webpage
+[youtube] uzsEmI61Xas: Downloading visionos player API JSON
+[youtube] uzsEmI61Xas: Downloading m3u8 information
+[info] uzsEmI61Xas: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - In the Flesh.webm
+[download]   0.0% of    3.07MiB at  999.60KiB/s ETA 00:03[download]   0.1% of    3.07MiB at    1.16MiB/s ETA 00:02[download]   0.2% of    3.07MiB at    2.72MiB/s ETA 00:01[download]   0.5% of    3.07MiB at    4.18MiB/s ETA 00:00[download]   1.0% of    3.07MiB at    8.63MiB/s ETA 00:00[download]   2.0% of    3.07MiB at    7.23MiB/s ETA 00:00[download]   4.0% of    3.07MiB at    2.72MiB/s ETA 00:01[download]   8.1% of    3.07MiB at    3.87MiB/s ETA 00:00[download]  16.3% of    3.07MiB at    4.36MiB/s ETA 00:00[download]  32.6% of    3.07MiB at    5.27MiB/s ETA 00:00[download]  65.2% of    3.07MiB at    7.89MiB/s ETA 00:00[download] 100.0% of    3.07MiB at   10.35MiB/s ETA 00:00[download] 100% of    3.07MiB in 00:00:00 at 7.39MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 2 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=KGC7E3XYZ1M
+[youtube] KGC7E3XYZ1M: Downloading webpage
+[youtube] KGC7E3XYZ1M: Downloading visionos player API JSON
+[youtube] KGC7E3XYZ1M: Downloading m3u8 information
+[info] KGC7E3XYZ1M: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - The Thin Ice.webm
+[download]   0.0% of    2.34MiB at  124.60KiB/s ETA 00:19[download]   0.1% of    2.34MiB at  332.40KiB/s ETA 00:07[download]   0.3% of    2.34MiB at  775.59KiB/s ETA 00:03[download]   0.6% of    2.34MiB at    1.62MiB/s ETA 00:01[download]   1.3% of    2.34MiB at    2.92MiB/s ETA 00:00[download]   2.6% of    2.34MiB at    5.94MiB/s ETA 00:00[download]   5.3% of    2.34MiB at    3.09MiB/s ETA 00:00[download]  10.6% of    2.34MiB at    4.39MiB/s ETA 00:00[download]  21.3% of    2.34MiB at    4.84MiB/s ETA 00:00[download]  42.6% of    2.34MiB at    6.29MiB/s ETA 00:00[download]  85.3% of    2.34MiB at    9.41MiB/s ETA 00:00[download] 100.0% of    2.34MiB at   10.49MiB/s ETA 00:00[download] 100% of    2.34MiB in 00:00:00 at 6.51MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 3 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=Te60_BiZlk0
+[youtube] Te60_BiZlk0: Downloading webpage
+[youtube] Te60_BiZlk0: Downloading visionos player API JSON
+[youtube] Te60_BiZlk0: Downloading m3u8 information
+[info] Te60_BiZlk0: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Another Brick in the Wall, Pt. 1.webm
+[download]   0.0% of    3.01MiB at  999.36KiB/s ETA 00:03[download]   0.1% of    3.01MiB at    1.46MiB/s ETA 00:02[download]   0.2% of    3.01MiB at    3.42MiB/s ETA 00:00[download]   0.5% of    3.01MiB at    4.88MiB/s ETA 00:00[download]   1.0% of    3.01MiB at    6.05MiB/s ETA 00:00[download]   2.0% of    3.01MiB at    6.83MiB/s ETA 00:00[download]   4.1% of    3.01MiB at    4.05MiB/s ETA 00:00[download]   8.3% of    3.01MiB at    5.38MiB/s ETA 00:00[download]  16.6% of    3.01MiB at    6.37MiB/s ETA 00:00[download]  33.2% of    3.01MiB at    8.65MiB/s ETA 00:00[download]  66.4% of    3.01MiB at   13.19MiB/s ETA 00:00[download] 100.0% of    3.01MiB at   17.01MiB/s ETA 00:00[download] 100% of    3.01MiB in 00:00:00 at 9.90MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 4 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=3hoipXdhRSc
+[youtube] 3hoipXdhRSc: Downloading webpage
+[youtube] 3hoipXdhRSc: Downloading visionos player API JSON
+[youtube] 3hoipXdhRSc: Downloading m3u8 information
+[info] 3hoipXdhRSc: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - The Happiest Days of Our Lives.webm
+[download]   0.1% of    1.69MiB at  998.88KiB/s ETA 00:01[download]   0.2% of    1.69MiB at    1.46MiB/s ETA 00:01[download]   0.4% of    1.69MiB at    3.42MiB/s ETA 00:00[download]   0.9% of    1.69MiB at    4.88MiB/s ETA 00:00[download]   1.8% of    1.69MiB at   10.09MiB/s ETA 00:00[download]   3.7% of    1.69MiB at    8.07MiB/s ETA 00:00[download]   7.4% of    1.69MiB at    7.17MiB/s ETA 00:00[download]  14.8% of    1.69MiB at    4.26MiB/s ETA 00:00[download]  29.6% of    1.69MiB at    5.11MiB/s ETA 00:00[download]  59.3% of    1.69MiB at    6.42MiB/s ETA 00:00[download] 100.0% of    1.69MiB at    8.41MiB/s ETA 00:00[download] 100% of    1.69MiB in 00:00:00 at 4.48MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 5 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=Ey8gm1W-e1Y
+[youtube] Ey8gm1W-e1Y: Downloading webpage
+[youtube] Ey8gm1W-e1Y: Downloading visionos player API JSON
+[youtube] Ey8gm1W-e1Y: Downloading m3u8 information
+[info] Ey8gm1W-e1Y: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Another Brick in the Wall, Pt. 2.webm
+[download]   0.0% of    3.84MiB at  554.36KiB/s ETA 00:07[download]   0.1% of    3.84MiB at    1.05MiB/s ETA 00:03[download]   0.2% of    3.84MiB at    2.45MiB/s ETA 00:01[download]   0.4% of    3.84MiB at    3.86MiB/s ETA 00:00[download]   0.8% of    3.84MiB at    7.97MiB/s ETA 00:00[download]   1.6% of    3.84MiB at    7.85MiB/s ETA 00:00[download]   3.2% of    3.84MiB at    7.37MiB/s ETA 00:00[download]   6.5% of    3.84MiB at    4.22MiB/s ETA 00:00[download]  13.0% of    3.84MiB at    5.26MiB/s ETA 00:00[download]  26.0% of    3.84MiB at    6.44MiB/s ETA 00:00[download]  52.1% of    3.84MiB at    9.61MiB/s ETA 00:00[download] 100.0% of    3.84MiB at   14.76MiB/s ETA 00:00[download] 100% of    3.84MiB in 00:00:00 at 9.83MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 6 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=o7MlC_Qrmmc
+[youtube] o7MlC_Qrmmc: Downloading webpage
+[youtube] o7MlC_Qrmmc: Downloading visionos player API JSON
+[youtube] o7MlC_Qrmmc: Downloading m3u8 information
+[info] o7MlC_Qrmmc: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Mother.webm
+[download]   0.0% of    5.63MiB at  Unknown B/s ETA Unknown[download]   0.1% of    5.63MiB at    2.93MiB/s ETA 00:01  [download]   0.1% of    5.63MiB at    6.83MiB/s ETA 00:00[download]   0.3% of    5.63MiB at    7.32MiB/s ETA 00:00[download]   0.5% of    5.63MiB at   11.60MiB/s ETA 00:00[download]   1.1% of    5.63MiB at    8.06MiB/s ETA 00:00[download]   2.2% of    5.63MiB at    3.58MiB/s ETA 00:01[download]   4.4% of    5.63MiB at    4.68MiB/s ETA 00:01[download]   8.9% of    5.63MiB at    5.67MiB/s ETA 00:00[download]  17.8% of    5.63MiB at    7.07MiB/s ETA 00:00[download]  35.5% of    5.63MiB at   10.28MiB/s ETA 00:00[download]  71.1% of    5.63MiB at   16.15MiB/s ETA 00:00[download] 100.0% of    5.63MiB at   20.56MiB/s ETA 00:00[download] 100% of    5.63MiB in 00:00:00 at 13.12MiB/s  
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 7 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=OArru5OkVKE
+[youtube] OArru5OkVKE: Downloading webpage
+[youtube] OArru5OkVKE: Downloading visionos player API JSON
+[youtube] OArru5OkVKE: Downloading m3u8 information
+[info] OArru5OkVKE: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Goodbye Blue Sky.webm
+[download]   0.0% of    2.76MiB at   68.09KiB/s ETA 00:41[download]   0.1% of    2.76MiB at  190.34KiB/s ETA 00:14[download]   0.2% of    2.76MiB at  444.12KiB/s ETA 00:06[download]   0.5% of    2.76MiB at  951.69KiB/s ETA 00:02[download]   1.1% of    2.76MiB at    1.81MiB/s ETA 00:01[download]   2.2% of    2.76MiB at    3.69MiB/s ETA 00:00[download]   4.5% of    2.76MiB at    7.01MiB/s ETA 00:00[download]   9.0% of    2.76MiB at    4.37MiB/s ETA 00:00[download]  18.1% of    2.76MiB at    5.15MiB/s ETA 00:00[download]  36.2% of    2.76MiB at    6.44MiB/s ETA 00:00[download]  72.5% of    2.76MiB at    9.51MiB/s ETA 00:00[download] 100.0% of    2.76MiB at   11.45MiB/s ETA 00:00[download] 100% of    2.76MiB in 00:00:00 at 6.91MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 8 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=TYcVBd-gRlo
+[youtube] TYcVBd-gRlo: Downloading webpage
+[youtube] TYcVBd-gRlo: Downloading visionos player API JSON
+[youtube] TYcVBd-gRlo: Downloading m3u8 information
+[info] TYcVBd-gRlo: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Empty Spaces.webm
+[download]   0.1% of    1.92MiB at   99.98KiB/s ETA 00:19[download]   0.2% of    1.92MiB at  272.67KiB/s ETA 00:07[download]   0.4% of    1.92MiB at  636.23KiB/s ETA 00:03[download]   0.8% of    1.92MiB at    1.33MiB/s ETA 00:01[download]   1.6% of    1.92MiB at    2.52MiB/s ETA 00:00[download]   3.2% of    1.92MiB at    5.13MiB/s ETA 00:00[download]   6.5% of    1.92MiB at    4.13MiB/s ETA 00:00[download]  13.0% of    1.92MiB at    5.23MiB/s ETA 00:00[download]  26.0% of    1.92MiB at    7.02MiB/s ETA 00:00[download]  52.1% of    1.92MiB at    9.58MiB/s ETA 00:00[download] 100.0% of    1.92MiB at   13.89MiB/s ETA 00:00[download] 100% of    1.92MiB in 00:00:00 at 7.54MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 9 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=GRsLPoNNV64
+[youtube] GRsLPoNNV64: Downloading webpage
+[youtube] GRsLPoNNV64: Downloading visionos player API JSON
+[youtube] GRsLPoNNV64: Downloading m3u8 information
+[info] GRsLPoNNV64: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Young Lust.webm
+[download]   0.0% of    3.37MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.37MiB at    2.93MiB/s ETA 00:01  [download]   0.2% of    3.37MiB at    3.42MiB/s ETA 00:00[download]   0.4% of    3.37MiB at    7.32MiB/s ETA 00:00[download]   0.9% of    3.37MiB at   15.13MiB/s ETA 00:00[download]   1.8% of    3.37MiB at    8.19MiB/s ETA 00:00[download]   3.7% of    3.37MiB at    7.29MiB/s ETA 00:00[download]   7.4% of    3.37MiB at    4.89MiB/s ETA 00:00[download]  14.8% of    3.37MiB at    5.36MiB/s ETA 00:00[download]  29.7% of    3.37MiB at    7.70MiB/s ETA 00:00[download]  59.3% of    3.37MiB at   11.20MiB/s ETA 00:00[download] 100.0% of    3.37MiB at   14.99MiB/s ETA 00:00[download] 100% of    3.37MiB in 00:00:00 at 9.26MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 10 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=2zdDP4hN2gI
+[youtube] 2zdDP4hN2gI: Downloading webpage
+[youtube] 2zdDP4hN2gI: Downloading visionos player API JSON
+[youtube] 2zdDP4hN2gI: Downloading m3u8 information
+[info] 2zdDP4hN2gI: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - One of My Turns.webm
+[download]   0.0% of    3.37MiB at  929.18KiB/s ETA 00:03[download]   0.1% of    3.37MiB at    1.46MiB/s ETA 00:02[download]   0.2% of    3.37MiB at    3.42MiB/s ETA 00:00[download]   0.4% of    3.37MiB at    4.88MiB/s ETA 00:00[download]   0.9% of    3.37MiB at    7.57MiB/s ETA 00:00[download]   1.8% of    3.37MiB at    6.47MiB/s ETA 00:00[download]   3.7% of    3.37MiB at    4.44MiB/s ETA 00:00[download]   7.4% of    3.37MiB at    5.40MiB/s ETA 00:00[download]  14.8% of    3.37MiB at    6.76MiB/s ETA 00:00[download]  29.6% of    3.37MiB at    9.51MiB/s ETA 00:00[download]  59.3% of    3.37MiB at   14.05MiB/s ETA 00:00[download] 100.0% of    3.37MiB at   19.13MiB/s ETA 00:00[download] 100% of    3.37MiB in 00:00:00 at 12.40MiB/s  
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 11 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=zppuIqcUsig
+[youtube] zppuIqcUsig: Downloading webpage
+[youtube] zppuIqcUsig: Downloading visionos player API JSON
+[youtube] zppuIqcUsig: Downloading m3u8 information
+[info] zppuIqcUsig: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Don't Leave Me Now.webm
+[download]   0.0% of    4.19MiB at  999.83KiB/s ETA 00:04[download]   0.1% of    4.19MiB at    1.46MiB/s ETA 00:02[download]   0.2% of    4.19MiB at    3.42MiB/s ETA 00:01[download]   0.3% of    4.19MiB at    7.32MiB/s ETA 00:00[download]   0.7% of    4.19MiB at   15.13MiB/s ETA 00:00[download]   1.5% of    4.19MiB at   20.51MiB/s ETA 00:00[download]   3.0% of    4.19MiB at   41.34MiB/s ETA 00:00[download]   5.9% of    4.19MiB at   62.25MiB/s ETA 00:00[download]  11.9% of    4.19MiB at   90.62MiB/s ETA 00:00[download]  23.8% of    4.19MiB at   90.38MiB/s ETA 00:00[download]  47.7% of    4.19MiB at   77.78MiB/s ETA 00:00[download]  95.4% of    4.19MiB at   67.28MiB/s ETA 00:00[download] 100.0% of    4.19MiB at   69.37MiB/s ETA 00:00[download] 100% of    4.19MiB in 00:00:00 at 42.79MiB/s  
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 12 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=6i96zId9cqM
+[youtube] 6i96zId9cqM: Downloading webpage
+[youtube] 6i96zId9cqM: Downloading visionos player API JSON
+[youtube] 6i96zId9cqM: Downloading m3u8 information
+[info] 6i96zId9cqM: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Another Brick in the Wall, Pt. 3.webm
+[download]   0.1% of    1.14MiB at  499.98KiB/s ETA 00:02[download]   0.3% of    1.14MiB at    1.46MiB/s ETA 00:00[download]   0.6% of    1.14MiB at    2.28MiB/s ETA 00:00[download]   1.3% of    1.14MiB at    3.66MiB/s ETA 00:00[download]   2.6% of    1.14MiB at    7.56MiB/s ETA 00:00[download]   5.4% of    1.14MiB at    4.55MiB/s ETA 00:00[download]  10.8% of    1.14MiB at    3.38MiB/s ETA 00:00[download]  21.8% of    1.14MiB at    4.64MiB/s ETA 00:00[download]  43.6% of    1.14MiB at    6.06MiB/s ETA 00:00[download]  87.3% of    1.14MiB at    7.71MiB/s ETA 00:00[download] 100.0% of    1.14MiB at    8.57MiB/s ETA 00:00[download] 100% of    1.14MiB in 00:00:00 at 4.98MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 13 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=0BS9oBLrDw8
+[youtube] 0BS9oBLrDw8: Downloading webpage
+[youtube] 0BS9oBLrDw8: Downloading visionos player API JSON
+[youtube] 0BS9oBLrDw8: Downloading m3u8 information
+[info] 0BS9oBLrDw8: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Goodbye Cruel World.webm
+[download]   0.1% of    1.24MiB at  132.51KiB/s ETA 00:09[download]   0.2% of    1.24MiB at  352.31KiB/s ETA 00:03[download]   0.5% of    1.24MiB at  822.07KiB/s ETA 00:01[download]   1.2% of    1.24MiB at    1.54MiB/s ETA 00:00[download]   2.4% of    1.24MiB at    3.19MiB/s ETA 00:00[download]   4.9% of    1.24MiB at    6.48MiB/s ETA 00:00[download]  10.0% of    1.24MiB at    4.85MiB/s ETA 00:00[download]  20.0% of    1.24MiB at    5.23MiB/s ETA 00:00[download]  40.1% of    1.24MiB at    6.07MiB/s ETA 00:00[download]  80.3% of    1.24MiB at    7.18MiB/s ETA 00:00[download] 100.0% of    1.24MiB at    7.92MiB/s ETA 00:00[download] 100% of    1.24MiB in 00:00:00 at 4.77MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 14 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=pPrte-OhUh4
+[youtube] pPrte-OhUh4: Downloading webpage
+[youtube] pPrte-OhUh4: Downloading visionos player API JSON
+[youtube] pPrte-OhUh4: Downloading m3u8 information
+[info] pPrte-OhUh4: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Hey You.webm
+[download]   0.0% of    4.73MiB at  999.12KiB/s ETA 00:04[download]   0.1% of    4.73MiB at    1.46MiB/s ETA 00:03[download]   0.1% of    4.73MiB at    2.28MiB/s ETA 00:02[download]   0.3% of    4.73MiB at    4.88MiB/s ETA 00:00[download]   0.6% of    4.73MiB at    7.57MiB/s ETA 00:00[download]   1.3% of    4.73MiB at    7.58MiB/s ETA 00:00[download]   2.6% of    4.73MiB at    2.67MiB/s ETA 00:01[download]   5.3% of    4.73MiB at    3.97MiB/s ETA 00:01[download]  10.5% of    4.73MiB at    4.38MiB/s ETA 00:00[download]  21.1% of    4.73MiB at    5.49MiB/s ETA 00:00[download]  42.3% of    4.73MiB at    8.25MiB/s ETA 00:00[download]  84.5% of    4.73MiB at   12.99MiB/s ETA 00:00[download] 100.0% of    4.73MiB at   14.52MiB/s ETA 00:00[download] 100% of    4.73MiB in 00:00:00 at 10.28MiB/s  
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 15 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=Aiu5Fr7-hFQ
+[youtube] Aiu5Fr7-hFQ: Downloading webpage
+[youtube] Aiu5Fr7-hFQ: Downloading visionos player API JSON
+[youtube] Aiu5Fr7-hFQ: Downloading m3u8 information
+[info] Aiu5Fr7-hFQ: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Is There Anybody Out There.webm
+[download]   0.0% of    2.65MiB at  391.37KiB/s ETA 00:06[download]   0.1% of    2.65MiB at    1.15MiB/s ETA 00:02[download]   0.3% of    2.65MiB at    1.92MiB/s ETA 00:01[download]   0.6% of    2.65MiB at    3.22MiB/s ETA 00:00[download]   1.1% of    2.65MiB at    6.65MiB/s ETA 00:00[download]   2.3% of    2.65MiB at    9.26MiB/s ETA 00:00[download]   4.7% of    2.65MiB at    2.88MiB/s ETA 00:00[download]   9.4% of    2.65MiB at    4.11MiB/s ETA 00:00[download]  18.8% of    2.65MiB at    4.82MiB/s ETA 00:00[download]  37.7% of    2.65MiB at    6.36MiB/s ETA 00:00[download]  75.3% of    2.65MiB at    9.67MiB/s ETA 00:00[download] 100.0% of    2.65MiB at   11.25MiB/s ETA 00:00[download] 100% of    2.65MiB in 00:00:00 at 7.17MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 16 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=CM-N9d8cm-A
+[youtube] CM-N9d8cm-A: Downloading webpage
+[youtube] CM-N9d8cm-A: Downloading visionos player API JSON
+[youtube] CM-N9d8cm-A: Downloading m3u8 information
+[info] CM-N9d8cm-A: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Nobody Home.webm
+[download]   0.0% of    3.24MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.24MiB at  Unknown B/s ETA Unknown[download]   0.2% of    3.24MiB at  Unknown B/s ETA Unknown[download]   0.5% of    3.24MiB at    7.37MiB/s ETA 00:00  [download]   0.9% of    3.24MiB at   15.23MiB/s ETA 00:00[download]   1.9% of    3.24MiB at   11.01MiB/s ETA 00:00[download]   3.8% of    3.24MiB at    4.94MiB/s ETA 00:00[download]   7.7% of    3.24MiB at    5.46MiB/s ETA 00:00[download]  15.4% of    3.24MiB at    6.64MiB/s ETA 00:00[download]  30.8% of    3.24MiB at    8.54MiB/s ETA 00:00[download]  61.6% of    3.24MiB at   12.19MiB/s ETA 00:00[download] 100.0% of    3.24MiB at   16.38MiB/s ETA 00:00[download] 100% of    3.24MiB in 00:00:00 at 9.74MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 17 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=HcJxrGVGg_4
+[youtube] HcJxrGVGg_4: Downloading webpage
+[youtube] HcJxrGVGg_4: Downloading visionos player API JSON
+[youtube] HcJxrGVGg_4: Downloading m3u8 information
+[info] HcJxrGVGg_4: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Vera.webm
+[download]   0.1% of    1.54MiB at  499.80KiB/s ETA 00:03[download]   0.2% of    1.54MiB at    1.46MiB/s ETA 00:01[download]   0.4% of    1.54MiB at    2.28MiB/s ETA 00:00[download]   1.0% of    1.54MiB at    4.88MiB/s ETA 00:00[download]   2.0% of    1.54MiB at    7.57MiB/s ETA 00:00[download]   4.0% of    1.54MiB at    6.15MiB/s ETA 00:00[download]   8.1% of    1.54MiB at    7.35MiB/s ETA 00:00[download]  16.2% of    1.54MiB at    4.58MiB/s ETA 00:00[download]  32.4% of    1.54MiB at    5.36MiB/s ETA 00:00[download]  65.0% of    1.54MiB at    6.59MiB/s ETA 00:00[download] 100.0% of    1.54MiB at    7.81MiB/s ETA 00:00[download] 100% of    1.54MiB in 00:00:00 at 4.65MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 18 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=Mvnog0sSBXo
+[youtube] Mvnog0sSBXo: Downloading webpage
+[youtube] Mvnog0sSBXo: Downloading visionos player API JSON
+[youtube] Mvnog0sSBXo: Downloading m3u8 information
+[info] Mvnog0sSBXo: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Bring the Boys Back Home.webm
+[download]   0.1% of    1.31MiB at   98.16KiB/s ETA 00:13[download]   0.2% of    1.31MiB at  268.12KiB/s ETA 00:04[download]   0.5% of    1.31MiB at  625.62KiB/s ETA 00:02[download]   1.1% of    1.31MiB at    1.20MiB/s ETA 00:01[download]   2.3% of    1.31MiB at    2.48MiB/s ETA 00:00[download]   4.7% of    1.31MiB at    5.05MiB/s ETA 00:00[download]   9.5% of    1.31MiB at    5.99MiB/s ETA 00:00[download]  19.0% of    1.31MiB at    5.05MiB/s ETA 00:00[download]  38.0% of    1.31MiB at    6.68MiB/s ETA 00:00[download]  76.1% of    1.31MiB at    8.21MiB/s ETA 00:00[download] 100.0% of    1.31MiB at    9.85MiB/s ETA 00:00[download] 100% of    1.31MiB in 00:00:00 at 4.66MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 19 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=4FLjT5V5Hog
+[youtube] 4FLjT5V5Hog: Downloading webpage
+[youtube] 4FLjT5V5Hog: Downloading visionos player API JSON
+[youtube] 4FLjT5V5Hog: Downloading m3u8 information
+[info] 4FLjT5V5Hog: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Comfortably Numb.webm
+[download]   0.0% of    6.11MiB at   96.24KiB/s ETA 01:05[download]   0.0% of    6.11MiB at  263.59KiB/s ETA 00:23[download]   0.1% of    6.11MiB at  615.04KiB/s ETA 00:10[download]   0.2% of    6.11MiB at    1.18MiB/s ETA 00:05[download]   0.5% of    6.11MiB at    2.45MiB/s ETA 00:02[download]   1.0% of    6.11MiB at    4.60MiB/s ETA 00:01[download]   2.0% of    6.11MiB at    3.37MiB/s ETA 00:01[download]   4.1% of    6.11MiB at    4.49MiB/s ETA 00:01[download]   8.2% of    6.11MiB at    5.85MiB/s ETA 00:00[download]  16.3% of    6.11MiB at    7.26MiB/s ETA 00:00[download]  32.7% of    6.11MiB at   11.17MiB/s ETA 00:00[download]  65.4% of    6.11MiB at   17.70MiB/s ETA 00:00[download] 100.0% of    6.11MiB at   23.66MiB/s ETA 00:00[download] 100% of    6.11MiB in 00:00:00 at 17.52MiB/s  
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 20 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=FNfKaAadupM
+[youtube] FNfKaAadupM: Downloading webpage
+[youtube] FNfKaAadupM: Downloading visionos player API JSON
+[youtube] FNfKaAadupM: Downloading m3u8 information
+[info] FNfKaAadupM: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - The Show Must Go On.webm
+[download]   0.1% of    1.59MiB at  106.33KiB/s ETA 00:15[download]   0.2% of    1.59MiB at  288.32KiB/s ETA 00:05[download]   0.4% of    1.59MiB at  672.75KiB/s ETA 00:02[download]   0.9% of    1.59MiB at    1.28MiB/s ETA 00:01[download]   1.9% of    1.59MiB at    2.65MiB/s ETA 00:00[download]   3.9% of    1.59MiB at    4.96MiB/s ETA 00:00[download]   7.8% of    1.59MiB at    6.39MiB/s ETA 00:00[download]  15.7% of    1.59MiB at    5.58MiB/s ETA 00:00[download]  31.4% of    1.59MiB at    6.94MiB/s ETA 00:00[download]  63.0% of    1.59MiB at    9.39MiB/s ETA 00:00[download] 100.0% of    1.59MiB at   11.87MiB/s ETA 00:00[download] 100% of    1.59MiB in 00:00:00 at 5.61MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 21 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=6Z6Je2QM6lE
+[youtube] 6Z6Je2QM6lE: Downloading webpage
+[youtube] 6Z6Je2QM6lE: Downloading visionos player API JSON
+[youtube] 6Z6Je2QM6lE: Downloading m3u8 information
+[info] 6Z6Je2QM6lE: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - In the Flesh.webm
+[download]   0.0% of    4.00MiB at   96.80KiB/s ETA 00:42[download]   0.1% of    4.00MiB at  266.28KiB/s ETA 00:15[download]   0.2% of    4.00MiB at  621.31KiB/s ETA 00:06[download]   0.4% of    4.00MiB at    1.19MiB/s ETA 00:03[download]   0.8% of    4.00MiB at    2.47MiB/s ETA 00:01[download]   1.5% of    4.00MiB at    4.64MiB/s ETA 00:00[download]   3.1% of    4.00MiB at    2.73MiB/s ETA 00:01[download]   6.2% of    4.00MiB at    2.99MiB/s ETA 00:01[download]  12.5% of    4.00MiB at    3.64MiB/s ETA 00:00[download]  25.0% of    4.00MiB at    4.82MiB/s ETA 00:00[download]  50.0% of    4.00MiB at    5.51MiB/s ETA 00:00[download] 100.0% of    4.00MiB at    6.31MiB/s ETA 00:00[download] 100.0% of    4.00MiB at    6.31MiB/s ETA 00:00[download] 100% of    4.00MiB in 00:00:00 at 5.38MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 22 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=y_Ol8avCkXg
+[youtube] y_Ol8avCkXg: Downloading webpage
+[youtube] y_Ol8avCkXg: Downloading visionos player API JSON
+[youtube] y_Ol8avCkXg: Downloading m3u8 information
+[info] y_Ol8avCkXg: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Run Like Hell.webm
+[download]   0.0% of    3.97MiB at  500.16KiB/s ETA 00:08[download]   0.1% of    3.97MiB at 1000.15KiB/s ETA 00:04[download]   0.2% of    3.97MiB at    2.28MiB/s ETA 00:01[download]   0.4% of    3.97MiB at    3.66MiB/s ETA 00:01[download]   0.8% of    3.97MiB at    6.05MiB/s ETA 00:00[download]   1.5% of    3.97MiB at    8.79MiB/s ETA 00:00[download]   3.1% of    3.97MiB at    6.20MiB/s ETA 00:00[download]   6.3% of    3.97MiB at    5.31MiB/s ETA 00:00[download]  12.6% of    3.97MiB at    6.82MiB/s ETA 00:00[download]  25.1% of    3.97MiB at    7.76MiB/s ETA 00:00[download]  50.3% of    3.97MiB at   10.33MiB/s ETA 00:00[download] 100.0% of    3.97MiB at   12.53MiB/s ETA 00:00[download] 100% of    3.97MiB in 00:00:00 at 9.10MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 23 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=cNFPEeTOW2E
+[youtube] cNFPEeTOW2E: Downloading webpage
+[youtube] cNFPEeTOW2E: Downloading visionos player API JSON
+[youtube] cNFPEeTOW2E: Downloading m3u8 information
+[info] cNFPEeTOW2E: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Waiting for the Worms.webm
+[download]   0.0% of    3.65MiB at  659.90KiB/s ETA 00:05[download]   0.1% of    3.65MiB at    1.17MiB/s ETA 00:03[download]   0.2% of    3.65MiB at    2.73MiB/s ETA 00:01[download]   0.4% of    3.65MiB at    4.17MiB/s ETA 00:00[download]   0.8% of    3.65MiB at    6.72MiB/s ETA 00:00[download]   1.7% of    3.65MiB at    6.37MiB/s ETA 00:00[download]   3.4% of    3.65MiB at    6.96MiB/s ETA 00:00[download]   6.8% of    3.65MiB at    5.94MiB/s ETA 00:00[download]  13.7% of    3.65MiB at    6.78MiB/s ETA 00:00[download]  27.4% of    3.65MiB at   10.06MiB/s ETA 00:00[download]  54.8% of    3.65MiB at   14.69MiB/s ETA 00:00[download] 100.0% of    3.65MiB at   21.34MiB/s ETA 00:00[download] 100% of    3.65MiB in 00:00:00 at 10.65MiB/s  
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 24 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=5manKiShnMk
+[youtube] 5manKiShnMk: Downloading webpage
+[youtube] 5manKiShnMk: Downloading visionos player API JSON
+[youtube] 5manKiShnMk: Downloading m3u8 information
+[info] 5manKiShnMk: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Stop.webm
+[download]   0.2% of  567.55KiB at  502.31KiB/s ETA 00:01[download]   0.5% of  567.55KiB at    1.47MiB/s ETA 00:00[download]   1.2% of  567.55KiB at    2.28MiB/s ETA 00:00[download]   2.6% of  567.55KiB at    3.67MiB/s ETA 00:00[download]   5.5% of  567.55KiB at    7.58MiB/s ETA 00:00[download]  11.1% of  567.55KiB at    6.84MiB/s ETA 00:00[download]  22.4% of  567.55KiB at    2.92MiB/s ETA 00:00[download]  44.9% of  567.55KiB at    4.17MiB/s ETA 00:00[download]  90.0% of  567.55KiB at    4.25MiB/s ETA 00:00[download] 100.0% of  567.55KiB at    4.68MiB/s ETA 00:00[download] 100% of  567.55KiB in 00:00:00 at 1.84MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 25 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=HJIqf4YnF4Y
+[youtube] HJIqf4YnF4Y: Downloading webpage
+[youtube] HJIqf4YnF4Y: Downloading visionos player API JSON
+[youtube] HJIqf4YnF4Y: Downloading m3u8 information
+[info] HJIqf4YnF4Y: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - The Trial.webm
+[download]   0.0% of    4.86MiB at  585.80KiB/s ETA 00:08[download]   0.1% of    4.86MiB at    1.72MiB/s ETA 00:02[download]   0.1% of    4.86MiB at    2.52MiB/s ETA 00:01[download]   0.3% of    4.86MiB at    5.41MiB/s ETA 00:00[download]   0.6% of    4.86MiB at    8.17MiB/s ETA 00:00[download]   1.3% of    4.86MiB at    7.90MiB/s ETA 00:00[download]   2.6% of    4.86MiB at    3.11MiB/s ETA 00:01[download]   5.1% of    4.86MiB at    4.44MiB/s ETA 00:01[download]  10.3% of    4.86MiB at    4.55MiB/s ETA 00:00[download]  20.5% of    4.86MiB at    5.97MiB/s ETA 00:00[download]  41.1% of    4.86MiB at    9.02MiB/s ETA 00:00[download]  82.2% of    4.86MiB at   14.42MiB/s ETA 00:00[download] 100.0% of    4.86MiB at   16.48MiB/s ETA 00:00[download] 100% of    4.86MiB in 00:00:00 at 9.54MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Downloading item 26 of 26
+[youtube] Extracting URL: https://music.youtube.com/watch?v=jnj4OYdNlIY
+[youtube] jnj4OYdNlIY: Downloading webpage
+[youtube] jnj4OYdNlIY: Downloading visionos player API JSON
+[youtube] jnj4OYdNlIY: Downloading m3u8 information
+[info] jnj4OYdNlIY: Downloading 1 format(s): 251
+[download] Destination: C:\Users\focks\OneDrive\Desktop\Music\Playlists\Album - The Wall\Pink Floyd - Album - The Wall - Outside the Wall.webm
+[download]   0.1% of    1.79MiB at  Unknown B/s ETA Unknown[download]   0.2% of    1.79MiB at    1.63MiB/s ETA 00:01  [download]   0.4% of    1.79MiB at    3.81MiB/s ETA 00:00[download]   0.8% of    1.79MiB at    8.17MiB/s ETA 00:00[download]   1.7% of    1.79MiB at   10.87MiB/s ETA 00:00[download]   3.4% of    1.79MiB at   10.64MiB/s ETA 00:00[download]   6.9% of    1.79MiB at    7.86MiB/s ETA 00:00[download]  13.9% of    1.79MiB at    4.43MiB/s ETA 00:00[download]  27.8% of    1.79MiB at    5.26MiB/s ETA 00:00[download]  55.7% of    1.79MiB at    6.65MiB/s ETA 00:00[download] 100.0% of    1.79MiB at    8.77MiB/s ETA 00:00[download] 100% of    1.79MiB in 00:00:00 at 4.93MiB/s   
+ERROR: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location
+[download] Finished downloading playlist: Album - The Wall

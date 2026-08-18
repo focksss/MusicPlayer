@@ -10,7 +10,7 @@ player := ComObject("WMPlayer.OCX")
 playlist := player.newPlaylist("AHK_Playlist", "")
 
 winWidth := 1000
-winHeight := 225
+winHeight := 260
 
 loopEnabled := false
 currentFolder := ""
@@ -44,6 +44,10 @@ myGui.AddButton("x600 y90 w100 h30", "Download Playlist")
     .OnEvent("Click", DownloadPlaylist)
 myGui.AddButton("x600 y130 w100 h30", "Remap Storage")
     .OnEvent("Click", SetStorageFolder)
+myGui.AddButton("x600 y170 w100 h30", "View Download Log")
+    .OnEvent("Click", ViewDownloadLog)
+myGui.AddButton("x600 y210 w100 h30", "Update (nightly)")
+    .OnEvent("Click", UpdateYtDlp)
 
 myGui.AddText("xm y55", "Now Playing:")
 titleText := myGui.AddText("x105 y55 w475", "Nothing playing")
@@ -267,6 +271,101 @@ GetStoragePath() {
     return IniRead(STATE_FILE, "Paths", "storage", "")
 }
 
+DenoAvailable() {
+    if FileExist(A_ScriptDir "\deno.exe")
+        return true
+
+    try {
+        shell := ComObject("WScript.Shell")
+        exec := shell.Exec(A_ComSpec ' /c where deno')
+
+        while !exec.StdOut.AtEndOfStream
+            exec.StdOut.ReadLine()
+
+        return (exec.ExitCode = 0)
+    } catch {
+        return false
+    }
+}
+
+FFmpegAvailable() {
+    if (FileExist(A_ScriptDir "\ffmpeg.exe") && FileExist(A_ScriptDir "\ffprobe.exe"))
+        return true
+
+    try {
+        shell := ComObject("WScript.Shell")
+        exec := shell.Exec(A_ComSpec ' /c where ffmpeg')
+
+        while !exec.StdOut.AtEndOfStream
+            exec.StdOut.ReadLine()
+
+        return (exec.ExitCode = 0)
+    } catch {
+        return false
+    }
+}
+
+UpdateYtDlp(*) {
+    global statusText
+
+    ytdlpPath := A_ScriptDir "\yt-dlp.exe"
+
+    if !FileExist(ytdlpPath) {
+        MsgBox(
+            "yt-dlp.exe was not found in:`n" A_ScriptDir,
+            "Error",
+            "Icon!"
+        )
+        return
+    }
+
+    logPath := A_ScriptDir "\yt-dlp_update_log.txt"
+    batPath := A_ScriptDir "\_ytdlp_update.bat"
+
+    batContent := "@echo off`r`n"
+        . '"' ytdlpPath '" --update-to nightly'
+        . ' > "' logPath '" 2>&1'
+        . "`r`n"
+
+    try FileDelete(batPath)
+    try FileDelete(logPath)
+
+    try {
+        FileAppend(batContent, batPath, "UTF-8")
+    } catch as err {
+        MsgBox(
+            "Failed to write updater script: " err.Message,
+            "Error",
+            "Icon!"
+        )
+        return
+    }
+
+    try {
+        RunWait('"' batPath '"', A_ScriptDir, "Hide")
+
+        result := ""
+
+        if FileExist(logPath) {
+            result := FileRead(logPath)
+        }
+
+        statusText.Text := "yt-dlp update finished. See log for details."
+
+        MsgBox(
+            result ? result : "Update finished, but no output was captured.",
+            "yt-dlp Update",
+            "Iconi"
+        )
+    } catch as err {
+        MsgBox(
+            "Failed to run yt-dlp update: " err.Message,
+            "Error",
+            "Icon!"
+        )
+    }
+}
+
 SetStorageFolder(*) {
     global STATE_FILE, statusText, myGui
 
@@ -289,6 +388,21 @@ SetStorageFolder(*) {
     )
 
     statusText.Text := "Music storage folder set to: " selected
+}
+
+ViewDownloadLog(*) {
+    logPath := A_ScriptDir "\yt-dlp_log.txt"
+
+    if !FileExist(logPath) {
+        MsgBox(
+            "No download log yet. Run a download first.",
+            "No Log",
+            "Icon!"
+        )
+        return
+    }
+
+    Run(logPath)
 }
 
 PromptForURL() {
@@ -390,18 +504,89 @@ DownloadPlaylist(*) {
         return
     }
 
+    if !DenoAvailable() {
+        answer := MsgBox(
+            "yt-dlp needs the Deno JavaScript runtime to download from "
+            . "YouTube reliably. Without it, downloads often fail with "
+            . "HTTP 403 errors.`n`n"
+            . "Download deno.exe from:`n"
+            . "https://github.com/denoland/deno/releases/latest`n"
+            . "and place it in:`n" A_ScriptDir
+            . "`n`nContinue anyway?",
+            "Deno Not Found",
+            "YesNo Icon!"
+        )
+
+        if (answer != "Yes")
+            return
+    }
+
+    if !FFmpegAvailable() {
+        answer := MsgBox(
+            "FFmpeg was not found. yt-dlp needs ffmpeg.exe and ffprobe.exe "
+            . "to extract/convert audio to mp3 — without them, downloads "
+            . "will fail at the conversion step.`n`n"
+            . "Download a Windows build (the 'full' or 'essentials' zip) "
+            . "from:`n"
+            . "https://www.gyan.dev/ffmpeg/builds/`n"
+            . "and place ffmpeg.exe and ffprobe.exe (from its bin folder) "
+            . "in:`n" A_ScriptDir
+            . "`n`nContinue anyway?",
+            "FFmpeg Not Found",
+            "YesNo Icon!"
+        )
+
+        if (answer != "Yes")
+            return
+    }
+
     outputTemplate := storage
         . "\%(playlist_title)s\%(artist)s - %(playlist_title)s - %(title)s.%(ext)s"
 
-    cmd := '"' ytdlpPath '"'
+    logPath := A_ScriptDir "\yt-dlp_log.txt"
+    batPath := A_ScriptDir "\_ytdlp_run.bat"
+
+    outputTemplateEscaped := StrReplace(outputTemplate, "%", "%%")
+
+    ffmpegLocationArg := ""
+    if FileExist(A_ScriptDir "\ffmpeg.exe")
+        ffmpegLocationArg := ' --ffmpeg-location "' A_ScriptDir '"'
+
+    batContent := "@echo off`r`n"
+        . '"' ytdlpPath '"'
         . ' -x --audio-format mp3'
-        . ' -o "' outputTemplate '"'
+        . ' --no-abort-on-error'
+        . ' --ignore-errors'
+        . ' --extractor-args "youtube:player_client=visionos"'
+        . ffmpegLocationArg
+        . ' -o "' outputTemplateEscaped '"'
         . ' "' url '"'
+        . ' > "' logPath '" 2>&1'
+        . "`r`n"
 
     try {
-        Run(cmd, A_ScriptDir, "Min")
+        FileDelete(batPath)
+    }
+    try {
+        FileDelete(logPath)
+    }
 
-        statusText.Text := "Downloading playlist to " storage " ..."
+    try {
+        FileAppend(batContent, batPath, "UTF-8")
+    } catch as err {
+        MsgBox(
+            "Failed to write launcher script: " err.Message,
+            "Error",
+            "Icon!"
+        )
+        return
+    }
+
+    try {
+        Run('"' batPath '"', A_ScriptDir, "Hide")
+
+        statusText.Text := "Downloading playlist to " storage
+            . "  (log: " logPath ")"
     } catch as err {
         MsgBox(
             "Failed to start yt-dlp: " err.Message,
@@ -453,6 +638,7 @@ LoadFolder(folder, restoreSaved := false) {
             ext = "mp3"
             || ext = "wav"
             || ext = "m4a"
+            || ext = "webm"
         ) {
             try {
                 mediaItem := player.newMedia(
