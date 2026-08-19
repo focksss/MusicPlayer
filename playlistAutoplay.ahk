@@ -155,6 +155,18 @@ if (windowX != "" && windowY != "") {
     myGui.Show("w" winWidth " h" winHeight)
 }
 
+if !DenoAvailable() {
+    answer := MsgBox(
+        "yt-dlp needs the Deno JavaScript runtime."
+        . "Automatically install it?`n`n"
+        "Deno Not Found",
+        "YesNo Icon!"
+    )
+
+    if (answer != "Yes")
+        Run('powershell.exe -Command "irm https://deno.land/install.ps1 | iex"', , "Hide")
+}
+
 savedVolume := IniRead(
     STATE_FILE,
     "Player",
